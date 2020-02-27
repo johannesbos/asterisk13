@@ -9,11 +9,8 @@ Asterisk log files are written to `/var/log/asterisk`.
 
 alaw and g722 sounds & moh are included.
 Use the `/var/lib/asterisk/sounds` volume if you want to provide your own sounds.
-For own music on hold, use the `/var/lib/asterisk/moh` volume.
 
-`volumes:`
-`- /docker/asterisk13/sounds:/var/lib/asterisk/sounds`
-`- /docker/asterisk13/musiconhold:/var/lib/asterisk/moh`
+For own music on hold, use the `/var/lib/asterisk/moh` volume.
 
 Use network mode host if you want the complete RTP range (10000-10099)
 `network_mode: host`
