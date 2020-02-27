@@ -10,8 +10,16 @@ Alaw and g722 sounds & moh are included.
 Use the /var/lib/asterisk/sounds volume if you want to provide your own sounds.
 For own music on hold, use the /var/lib/asterisk/moh volume.
 
+volumes:
+ - /docker/asterisk13/sounds:/var/lib/asterisk/sounds
+ - /docker/asterisk13/musiconhold:/var/lib/asterisk/moh
+
+Use network mode host if you want the complete RTP range (10000-10099)
+network_mode: host
+
 example docker-compose:
-'''bash
+
+
 version: "3"
 services:
   asterisk13:
@@ -19,10 +27,7 @@ services:
     container_name: asterisk13
     volumes:
       - /docker/asterisk13/config:/etc/asterisk
-      - /docker/asterisk13/log:/var/log/asterisk
-#     - /docker/asterisk13/sounds:/var/lib/asterisk/sounds
-#     - /docker/asterisk13/musiconhold:/var/lib/asterisk/moh
-#   network_mode: host (Use network mode host if you want the complete RTP range (10000-10099)
+      - /docker/asterisk13/log:/var/log/asterisk  
     ports:
       - 5060:5060/udp
       - 10000:10000/udp
@@ -36,4 +41,4 @@ services:
       - 10008:10008/udp
       - 10009:10009/udp
     restart: unless-stopped
-'''
+
