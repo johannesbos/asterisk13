@@ -8,7 +8,9 @@ Please provide your own config via the `/etc/asterisk` volume.
 Asterisk log files are written to `/var/log/asterisk`.
 
 Use the `/var/lib/asterisk/sounds` volume if you want to provide your own sounds.
+
 Use the `/var/lib/asterisk/moh` volume if you want to provide your own moh.
+
 Use `network_mode: host` if you want the complete RTP range (10000-20000)
 
 A `docker-compose.yml` example
