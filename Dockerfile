@@ -12,10 +12,6 @@ RUN curl -O http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-13-cur
     && ./configure --libdir=/usr/lib64 --with-pjproject-bundled \
     && make menuselect.makeopts \
     && ./menuselect/menuselect \
-# CDR
-    --disable-category MENUSELECT_CDR \
-# CEL
-    --disable-category MENUSELECT_CEL \
 # CHANNELS
     --disable-category MENUSELECT_CHANNELS \
     --enable chan_bridge_media \
@@ -43,25 +39,23 @@ RUN curl -O http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-13-cur
 # CFLAGS
     --disable BUILD_NATIVE \
 # CORE_SOUNDS
-    --disable-category MENUSELECT_CORE_SOUNDS \
-    --enable CORE-SOUNDS-EN-ALAW \
-    --enable CORE-SOUNDS-EN-G722 \
+    --disable-category MENUSELECT_CORE_SOUNDS \    
 # MOH
-   --disable-category MENUSELECT_MOH \
-   --enable MOH-OPSOUND-ALAW \
-   --enable MOH-OPSOUND-G722 \
+   --disable-category MENUSELECT_MOH \  
 # EXTRA_SOUNDS
     --disable-category MENUSELECT_EXTRA_SOUNDS \
     menuselect.makeopts \    
     && make \ 
     && make install \
     && make config \
+    && make install-logrotate \
     && make distclean \
+    && yum install -y tzdata \
     && yum clean all \
     && rm -rf *
 
-EXPOSE 5060/udp 10000-10099/udp
+EXPOSE 5060/udp 10000-20000/udp
 
-VOLUME /etc/asterisk /var/lib/asterisk/sounds /var/lib/asterisk/moh /var/log/asterisk
+VOLUME /etc/asterisk /var/log/asterisk /var/lib/asterisk/sounds /var/lib/asterisk/moh 
 
 CMD ["/usr/sbin/asterisk", "-vvvvvvv"]
