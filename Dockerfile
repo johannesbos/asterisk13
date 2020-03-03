@@ -41,7 +41,7 @@ RUN curl -O http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-13-cur
 # CORE_SOUNDS
     --disable-category MENUSELECT_CORE_SOUNDS \    
 # MOH
-   --disable-category MENUSELECT_MOH \  
+    --disable-category MENUSELECT_MOH \  
 # EXTRA_SOUNDS
     --disable-category MENUSELECT_EXTRA_SOUNDS \
     menuselect.makeopts \    
