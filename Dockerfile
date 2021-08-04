@@ -56,6 +56,6 @@ RUN curl -O http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-13-cur
 
 EXPOSE 5060/udp 10000-20000/udp
 
-VOLUME /etc/asterisk /var/log/asterisk /var/lib/asterisk/sounds /var/lib/asterisk/moh 
+VOLUME /etc/asterisk /var/log/asterisk /var/lib/asterisk/ /var/spool/asterisk
 
 CMD ["/usr/sbin/asterisk", "-vvvvvvv"]
